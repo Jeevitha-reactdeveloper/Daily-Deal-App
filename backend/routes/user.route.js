@@ -1,0 +1,111 @@
+import express from 'express';
+import User from '../models/user.model.js'
+import jwt from 'jsonwebtoken';
+import protectedRoute from '../middleware/protectRoute.js'
+
+const router = express.Router();
+
+//@route POST /api/users/register
+// @desc Register a new user
+// @access Public
+
+ router.post("/register", async (req,res) =>{
+            //register logic
+
+    try {
+        const {name,email,password} = req.body;
+        console.log("REGISTER ROUTE HIT", req.body); //  check this
+
+        let user = await User.findOne({email})
+
+        if(user){
+            return res.status(400).json({message : "User already Exists"});
+        }
+
+        user = new User({name,email,password});
+        await user.save();
+
+        // Create JWT payload
+
+        const payload = {user: {id: user._id,role : user.role}};
+
+        //Sign and return the token along with user data
+        jwt.sign(payload,process.env.JWT_SECRET, {expiresIn : "15d"},(err,token) =>{
+            if(err) throw err;
+
+            //send the user and token in response
+
+            res.status(201).json({
+                user : {
+                    _id : user._id,
+                    name : user.name,
+                    email : user.email,
+                    role : user.role
+                },
+                token,
+            })
+            
+        });
+    } catch (error) {
+        res.status(500).json({error : "Internal server error"});
+        console.log("Error in the user controller",error)
+        
+    }
+});
+
+//route POST /api/users/login
+// description authenticate user
+// access public
+
+router.post("/login", async (req,res)=>{
+    const {email,password} = req.body;
+    try {
+        // find the user by email
+        let user = await User.findOne({email});
+
+        if(!user) return res.status(400).json({message : "Invalid Credentials"});
+        const isMatch = await user.matchPassword(password)
+
+        if(!isMatch){
+            return res.status(400).json({message : "invalid credentials"})
+        }
+
+          // Create JWT payload
+
+        const payload = {user: {id: user._id,role : user.role}};
+
+        //Sign and return the token along with user data
+        jwt.sign(payload,process.env.JWT_SECRET, {expiresIn : "15d"},(err,token) =>{
+            if(err) throw err;
+
+            //send the user and token in response
+
+            res.json({
+                user : {
+                    _id : user._id,
+                    name : user.name,
+                    email : user.email,
+                    role : user.role
+                },
+                token,
+            })
+            
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("server Error")
+    }
+})
+
+
+
+//router get /api/users/profile
+// desc Get logged-in users profile(protected route)
+// access private
+router.get("/profile",protectedRoute,async (req,res) =>{
+    res.json(req.user)
+})
+
+
+
+export default router; 
