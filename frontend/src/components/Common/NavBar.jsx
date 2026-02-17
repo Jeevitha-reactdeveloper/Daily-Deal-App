@@ -7,14 +7,19 @@ import CartDrawer from '../Layout/CartDrawer';
 import { useState } from 'react';
 import { IoMdClose } from "react-icons/io";
 import { IoMenu } from "react-icons/io5";
+import { useSelector } from 'react-redux';
 
 
 
 
-const NavBar = () => {
+const NavBar = () => { 
    const [drawerOpen,setDrawerOpen] = useState(false);
    const [navDrawerOpen,setNavDrawerOpen] = useState(false);
+   const {cart} = useSelector((state) => state.cart);
+   const {user} = useSelector((state) => state.auth);
 
+   const cartItemCount = cart?.products?.reduce((total,product) => total + product.quantity,0) || 0 ;
+ 
    const toggleNavDrawer = () =>{
     setNavDrawerOpen(!navDrawerOpen)
    }
@@ -28,21 +33,24 @@ const NavBar = () => {
             <Link to="/" className='text-xl md:text-2xl font-medium'>Daily Deal</Link>
         </div>
         <div className='hidden md:flex space-x-6 '>
-          <Link to='/collections/all' className='text-gray-700 hover:text-black text-sm font-medium uppercase'>Men</Link>
-          <Link to='#' className='text-gray-700 hover:text-black text-sm font-medium uppercase'>Women</Link>
-          <Link to='#' className='text-gray-700 hover:text-black text-sm font-medium uppercase'>Top Wear</Link>
-          <Link to='#' className='text-gray-700 hover:text-black text-sm font-medium uppercase'>Bottom Wear</Link>
+          <Link to='/collections/all?gender=Men' className='text-gray-700 hover:text-black text-sm font-medium uppercase'>Men</Link>
+          <Link to='/collections/all?gender=Women' className='text-gray-700 hover:text-black text-sm font-medium uppercase'>Women</Link>
+          <Link to='/collections/all?category=Top Wear' className='text-gray-700 hover:text-black text-sm font-medium uppercase'>Top Wear</Link>
+          <Link to='/collections/all?category=Bottom Wear' className='text-gray-700 hover:text-black text-sm font-medium uppercase'>Bottom Wear</Link>
 
         </div>
         <div className='flex items-center space-x-4'>
-          <Link to="/admin" className='block bg-black px-2 rounded text-sm text-white'>Admin</Link>
+          {user && user.role === "admin" && (
+          <Link to="/admin" className='block bg-black px-2 rounded text-sm text-white'>Admin</Link>)}
           <Link to='/profile' className='hover:text-black'>
             <FaRegUser className ='h-6 w-6 text-gray-700'/>
           </Link>
 
             <button className='relative hover:text-black' onClick={toggleCartDrawer}>
               <FaShoppingBag className='h-6 w-6 text-gray-700'/>
-              <span className='absolute -top-1 bg-[#ea2e0e] text-white text-xs rounded-full px-2 py-0.5'>4</span>
+              {cartItemCount > 0 && 
+              (<span className='absolute -top-1 bg-[#ea2e0e] text-white text-xs rounded-full px-2 py-0.5'>{cartItemCount}</span>
+)}
             </button>
               
               <button onClick={toggleNavDrawer} className='md:hidden'>
@@ -70,10 +78,10 @@ const NavBar = () => {
       <div>
         <h2 className='text-2xl font-semibold mb-4 flex justify-center'>Menu</h2>
         <nav className='space-y-4'>
-          <Link to ='/collections/all'  className=' text-gray-600 hover:text-black flex justify-center border-b'>Men</Link>
-          <Link to='#' onClick={toggleNavDrawer} className=' text-gray-600 hover:text-black flex justify-center border-b'>Women</Link>
-          <Link to='#' onClick={toggleNavDrawer} className=' text-gray-600 hover:text-black flex justify-center border-b'>Top Wear</Link>
-          <Link to='#' onClick={toggleNavDrawer} className=' text-gray-600 hover:text-black flex justify-center border-b'>Bottom Wear</Link>
+          <Link to ='/collections/all?gender=Men'  className=' text-gray-600 hover:text-black flex justify-center border-b'>Men</Link>
+          <Link to='/collections/all?gender=Women'  className=' text-gray-600 hover:text-black flex justify-center border-b'>Women</Link>
+          <Link to='/collections/all?category=Top Wear'  className=' text-gray-600 hover:text-black flex justify-center border-b'>Top Wear</Link>
+          <Link to='/collections/all?category=Bottom Wear'  className=' text-gray-600 hover:text-black flex justify-center border-b'>Bottom Wear</Link>
 
         </nav>
       </div>

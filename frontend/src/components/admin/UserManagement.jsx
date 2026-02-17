@@ -1,14 +1,37 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
+import { addUser, deleteUser, fetchUsers, updateUser } from '../../redux/slices/adminSlice';
 
 const UserManagement = () => {
-    const users = [
+   /*  const users = [
         {
             _id :12357,
             name : "Tharun",
             email : "Tharun@gmail.com",
             role : "admin",
         },
-    ];
+    ]; */
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const {user} = useSelector((state) => state.auth);
+/*     const {users,loading,error} = useSelector((state) => state.admin?.users || []); */  
+  const { users = [], loading, error } = useSelector((state) => state.admin || {});
+
+
+    useEffect(() =>{
+        if(user && user.role !== "admin"){
+            navigate("/");
+        }
+    },[user,navigate]);
+
+    useEffect(()=>{
+        if(user && user.role === "admin"){
+            dispatch(fetchUsers());
+        }
+    },[dispatch,user])
+
 
     const [formData,setFormData] = useState({
         //Reset the form after submission
@@ -24,27 +47,38 @@ const UserManagement = () => {
 
        const handleSubmit = (e) =>{
         e.preventDefault();
-        console.log(formData);
-        setFormData({
+          console.log("Submitting:", formData);
+
+/*         console.log(formData); */       
+        dispatch(addUser(formData));
+         setFormData({
             name : "",
             email : "",
             password : ""
         })
        }
 
-      const handleRoleChange = (userId,newRole) =>{
-            console.log({id: userId,newRole})
-      }
+      const handleRoleChange = async(userId,newRole) =>{
+/*             console.log({id: userId,newRole})*/   
+        await dispatch(updateUser({id: userId,role :newRole}));   
+        dispatch(fetchUsers());
+    }
 
-      const handleDeleteUser = (userId) =>{
+      const handleDeleteUser = async(userId) =>{
         if(window.confirm("Are you sure you want to delete this user?")){
-            console.log("deleting user with ID",userId)
-        }
+/*             console.log("deleting user with ID",userId)
+ */         await  dispatch(deleteUser( userId));
+            dispatch(fetchUsers());
+         }
       }
+      console.log("addUser function:", addUser);
 
   return (
     <div className='max-w-7xl mx-auto p-6'>
         <h2 className='text-2xl font-bold mb-6'>User Management</h2>
+        {loading && <p>Loading...</p>}
+        {error && <p>Error:{error}</p>}
+
         {/* add new user form */}
         <div className='p-6 rounded-lg mb-6'>
             <h3 className='text-lg font-bold mb-4'>Add New User</h3>
@@ -118,7 +152,7 @@ const UserManagement = () => {
 
                 </thead>
                 <tbody>
-                    {users.map((user) =>{
+                    {users?.map((user) =>{
                         return(
                             <tr key={user._id} className='border-b hover:bg-gray-50'>
                                 <td className='p-4 font-medium text-gray-900 whitespace-nowrap'>{user.name}</td>

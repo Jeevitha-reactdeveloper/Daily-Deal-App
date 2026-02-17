@@ -1,7 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const ProductGrid = ({products}) => {
+const ProductGrid = ({products,loading,error}) => {
+    /* if(loading) {
+        return <p>Loading</p>
+    } */
+
+    if(error){
+        return <p>Error : {error}</p>
+    }
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'>
         {products.map((product,index)=>{
@@ -15,7 +22,7 @@ const ProductGrid = ({products}) => {
                         </div>
                     </div> 
                     <h3 className='text-sm mb-2 ml-4'>{product.name}</h3>
-                    <p className='text-gray-500 ml-4 font-medium tracking-tighter text-sm'>₹ {product.price}</p>
+                    <p className='text-gray-500 ml-4 font-medium tracking-tighter text-sm'>${product.price}</p>
                 </Link>
 
             )

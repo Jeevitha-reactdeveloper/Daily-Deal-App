@@ -3,9 +3,32 @@ import { FaFilter } from 'react-icons/fa6';
 import FilterSidebar from '../components/Products/FilterSidebar';
 import { SortOptions } from '../components/Products/SortOptions';
 import ProductGrid from '../components/Products/ProductGrid';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProductsByFilters } from '../redux/slices/productsSlice';
 
 const CollectionPage = () => {
-    const [products,setProducts] = useState([]);
+    const {collection} = useParams();
+    const [searchParams,setSearchParams] = useSearchParams();
+    const dispatch = useDispatch();
+    const {products,loading,error} = useSelector((state) => state.products);
+    const queryParams = Object.fromEntries([...searchParams]);
+    
+    useEffect(() =>{
+         const params = Object.fromEntries([...searchParams]);
+
+             // convert strings → arrays
+            if (params.size) params.size = params.size.split(",");
+            if (params.material) params.material = params.material.split(",");
+            if (params.brand) params.brand = params.brand.split(",");
+            if (params.minPrice) params.minPrice = Number(params.minPrice);
+            if (params.maxPrice) params.maxPrice = Number(params.maxPrice);
+            dispatch(fetchProductsByFilters({collection, ...params}))
+        
+    },[dispatch,collection,searchParams.toString()])
+
+
+    //const [products,setProducts] = useState([]);
     const sidebarRef = useRef(null);
     const [isSidebarOpen,setisSidebarOpen] = useState(false);
 
@@ -31,7 +54,7 @@ const CollectionPage = () => {
         }
     },[])
 
-    useEffect(()=>{
+   /*  useEffect(()=>{
         setTimeout(() =>{
             const fetchedProducts =  [
      {
@@ -87,7 +110,7 @@ const CollectionPage = () => {
 setProducts(fetchedProducts);
 
         })
-    },[])
+    },[]) */
 
   return (
     <div className='flex flex-col lg:flex-row '>
@@ -110,7 +133,7 @@ setProducts(fetchedProducts);
             <SortOptions/>
 
             {/* product grid */}
-            <ProductGrid products={products}/>
+            <ProductGrid products={products} loading={loading} error={error}/>
         </div>
     </div>
     

@@ -186,7 +186,6 @@ router.get("/", async (req,res)=>{
             //split converts string to array which is required for mongodb query
            // from this  material=cotton,linen,silk to ["cotton", "linen", "silk"]
 
-
             if(material){
                 query.material = {$in  : material.split(",")};
             }
@@ -196,7 +195,7 @@ router.get("/", async (req,res)=>{
             }
 
              if(size){
-                query.size = {$in  : size.split(",")};
+                query.sizes = {$in  : size.split(",")};
             }
 
              if(color){
@@ -244,6 +243,8 @@ router.get("/", async (req,res)=>{
             }
 
             //Fetch products and apply sorting and limit
+            console.log("REQ QUERY:", req.query);
+console.log("MONGO QUERY:", query);
 
             let products = await Product.find(query).sort(sort).limit(Number(limit) ||  0);
             res.json(products);

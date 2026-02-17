@@ -6,6 +6,10 @@ const productSchema = new mongoose.Schema({
         required : true,
         trim : true
     },
+    description : {
+        type : String,
+        requirded : true
+    },
     price : {
         type : Number,
         required : true,
@@ -17,6 +21,10 @@ const productSchema = new mongoose.Schema({
         type : Number,
         required : true,
         default : 0
+    },
+    colors : {
+        type : [String],
+        required : true
     },
     sku : {
         type : String,

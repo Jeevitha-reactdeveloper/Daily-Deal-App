@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner';
 import ProductGrid from './ProductGrid';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProductsDetails, fetchSimilarProducts } from '../../redux/slices/productsSlice';
+import { addToCart } from '../../redux/slices/cartSlice';
 
-const selectedProduct = {
+/* const selectedProduct = {
     name:"Stylish Jacket",
     price: 120,
     originalPrice : 150,
@@ -20,9 +24,9 @@ const selectedProduct = {
         altText : "Stylish Jacket 2",
     }
 ]
-};
+}; */
 
-const similarProducts = [
+/* const similarProducts = [
     {
         _id : 1,
         name : "Product 1",
@@ -47,19 +51,34 @@ const similarProducts = [
         price : 100,
         images : [{url: "https://picsum.photos/500/500?random=4"}]
     }
-]
+] */
 
-const ProductsDetails = () => {
+const ProductsDetails = ({productId}) => {
+    const {id} = useParams();
+    const dispatch = useDispatch();
+    const {selectedProduct,loading,error,similarProducts} = useSelector((state) => state.products);
+    const {user,guestId} = useSelector((state) => state.auth);
     const [mainImg,setmainImg] = useState("");
     const [selectedSize,setSelectedSize] = useState("");
     const [selectedColor,setSelectedColor] = useState("");
     const [quantity,setQuantity] = useState(1);
     const [isButtonDisabled,setisButtonDisabled] = useState(false);
 
+    const productFetchId = productId || id;
+
+    useEffect(() =>{
+        if(productFetchId){
+            dispatch(fetchProductsDetails(productFetchId));
+            dispatch(fetchSimilarProducts({id : productFetchId}));
+        }
+    },[dispatch,productFetchId])
+
     useEffect(()=>{
         if(selectedProduct?.images.length > 0){
             setmainImg(selectedProduct.images[0].url)
         }
+        console.log("colors →", selectedProduct?.colors);
+
     },[selectedProduct])
 
     const handleQuantityChange = (action) =>{
@@ -80,21 +99,50 @@ const ProductsDetails = () => {
         }
         setisButtonDisabled(true);
 
-        setTimeout(() =>{
+        /* setTimeout(() =>{
             toast.success("Product added to cart",{
                 duration:1000,
             });
         setisButtonDisabled(false);
 
-        },500);
+        },500); */
+
+        dispatch(
+            addToCart({
+                productId : productFetchId,
+                quantity,
+                size : selectedSize,
+                color : selectedColor,
+                guestId,
+                userId : user?._id,
+            }
+            )
+        )
+        .then(() =>{
+            toast.success("Product added to the Cart!",{
+                duration : 1000
+            });
+        })
+        .finally(() =>{
+            setisButtonDisabled(false);
+        })
+    };
+
+   /*  if(loading){
+        return <p>Loading...</p>
+    } */
+
+    if(error){
+        <p>Error : {error}</p>
     }
   return (
     <div className='p-6'>
+        {selectedProduct && (
         <div className='max-w-6xl mx-auto p-8 rounded-lg'>
             <div className='flex flex-col md:flex-row'>
                 {/* left thumbnails */}
                 <div className='hidden md:flex flex-col space-y-4 mr-6'>
-                    {selectedProduct.images.map((image,index)=>{
+                    {selectedProduct?.images?.map((image,index)=>{
                         return(
                         <img
                         onClick={()=> setmainImg(image.url)}
@@ -108,14 +156,16 @@ const ProductsDetails = () => {
                 {/* Main image */}
                 <div className='md:w-1/2 '>
                     <div className='mb-4'>
+                        { mainImg && (
                         <img src={mainImg}
                         alt='Main Product'
                         className='w-full h-auto object-cover rounded-lg'/>
+                    )}
                     </div>
                 </div>
                 {/* mobile thumbnail */}
                 <div className='md:hidden flex overscroll-x-scroll space-x-4 mb-4'>
-                    {selectedProduct.images.map((image,index)=>{
+                    {selectedProduct?.images?.map((image,index)=>{
                         return(
                         <img 
                         onClick={()=> setmainImg(image.url)}
@@ -134,19 +184,18 @@ const ProductsDetails = () => {
                         {selectedProduct.originalPrice}
                     </p>
                     <p className='text-xl text-gray-500 mb-2'>
-                        ₹ {selectedProduct.price}
+                         ${selectedProduct.price}
                     </p>
                     <p className='text-gray-600 mb-4'>{selectedProduct.description}</p>
                     <div className='mb-4 '>
                         <p className='text-gray-700'>Color:</p>
                         <div className='flex gap-2 mt-2'>
-                            {selectedProduct.colors.map((color) => {
+                            {selectedProduct?.colors?.map((color) => {
                                 return (
                                     <button key={color} 
                                     onClick={() => setSelectedColor(color)}
-                                    className={`w-6 h-6 rounded-full border ${selectedColor === color ? "border-4 border-black" : "border-gray-300"}`}
-                                    style={{backgroundColor:color.toLocaleLowerCase(),
-                                        filter: "brightness(0.5)"
+                                    className={`w-6 h-6 rounded-full border-2 ${selectedColor === color ? "border-4 border-black" : "border-gray-300"}`}
+                                    style={{backgroundColor:color.toLowerCase()
                                     }}
                                     ></button>
                                 )
@@ -155,7 +204,7 @@ const ProductsDetails = () => {
                     </div>
                     <div className='mb-4'>
                         <p className='text-gray-700 '>Size:</p>
-                        <div className='flex gap-2 mt-4'>{selectedProduct.sizes.map((size) =>{
+                        <div className='flex gap-2 mt-4'>{selectedProduct?.sizes?.map((size) =>{
                             return <button 
                             key={size}
                             onClick={()=>setSelectedSize(size)}
@@ -207,9 +256,10 @@ const ProductsDetails = () => {
                 <h2 className='text-2xl text-center font-medium mb-4'>
                     You May Also Like
                 </h2>
-                <ProductGrid products = {similarProducts}/>
+                <ProductGrid products = {similarProducts} loading={loading} error={error}/>
             </div>
         </div>
+        )}
     </div>
   )
 }

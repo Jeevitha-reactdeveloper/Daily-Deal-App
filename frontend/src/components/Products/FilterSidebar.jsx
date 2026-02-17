@@ -11,13 +11,13 @@ const FilterSidebar = () => {
         size : [],
         material : [],
         brand : [],
-        minPrice : 300,
-        maxPrice : 2000,
+        minPrice : 10,
+        maxPrice : 100,
     });
 
-    const [priceRange,setPriceRange] = useState([300,2000]);
+    const [priceRange,setPriceRange] = useState([10,100]);
 
-    const categories = ["Top wear","Bottom wear"];
+    const categories = ["Top Wear","Bottom Wear"];
 
     const colors = [
         "Red",
@@ -46,7 +46,9 @@ const FilterSidebar = () => {
         "Modern Fit",
         "Allen Solly",
         "Peter England",
-        "Fashion Studio"
+        "Fashion Studio",
+        "Comfy Fit",
+        "Elegance"
     ]
 
     const genders = ["Men","Women"];
@@ -62,10 +64,10 @@ const FilterSidebar = () => {
             size : params.size ? params.size.split(",") : [],
             material : params.material ? params.material.split(",") : [],
             brand : params.brand ? params.brand.split(",") : [],
-            minPrice : params.minPrice || 300,
-            maxPrice : params.maxPrice || 2000,
+            minPrice : params.minPrice || 10,
+            maxPrice : params.maxPrice || 100,
          });
-         setPriceRange([0,params.maxPrice || 2000])
+         setPriceRange([0,params.maxPrice || 100])
     },[searchParams])
 
     const handleFilterChange = (e) =>{
@@ -107,7 +109,7 @@ const FilterSidebar = () => {
         const newPrice = e.target.value;
         setPriceRange([0,newPrice]);
         const newFilters = {...filters,minPrice: 0,maxPrice: newPrice}
-        setFilters(filters);
+        setFilters(newFilters);
         updateUrlParams(newFilters)
 
     }
@@ -144,8 +146,8 @@ const FilterSidebar = () => {
                         onChange={handleFilterChange}
                         checked = {filters.gender === gender}
                         type='radio'
-                         name='gender' 
-                         className='mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300'/>
+                        name='gender' 
+                        className='mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300'/>
                         <span className='text-gray-800'>{gender}</span>
                     </div>
                 )
@@ -153,22 +155,43 @@ const FilterSidebar = () => {
             })}
         </div>
         {/* color filter */}
-        <div className='mb-6 '>
+       {/*  <div className='mb-6 '>
             <label className='block text-gray-600  font-medium mb-2'>Color</label>
             <div className='flex flex-wrap gap-2 '>
                 {colors.map((color) =>{
                     return(
                         <button
+                        type='button'
                         value={color}
                         onClick={handleFilterChange}
-                         key={color} name='color' 
+                         key={color} 
+                         name='color' 
                         className={`w-8 h-8 rounded-full border border-gray-300 
                         cursor-pointer transition hover:scale-105 ${filters.color === color ? "ring-2 ring-blue-500" : ""}`}
                         style={{backgroundColor : color.toLowerCase()}}></button>
                     )
                 })}
             </div>
-        </div>
+        </div> */}
+        {colors.map((color) => (
+  <label key={color} className="cursor-pointer">
+    <input
+      type="radio"
+      name="color"
+      value={color}
+      checked={filters.color === color}
+      onChange={handleFilterChange}
+      className="hidden"
+    />
+
+    <span
+      className={`w-8 h-8 inline-block rounded-full border 
+      ${filters.color === color ? "ring-2 ring-blue-500" : ""}`}
+      style={{ backgroundColor: color.toLowerCase() }}
+    />
+  </label>
+))}
+
         {/* size filter */}
         <div className='mb-6 '>
             <label className='block text-gray-600 font-medium mb-2'>Size</label>
@@ -226,14 +249,14 @@ const FilterSidebar = () => {
         <div className='mb-8'>
             <label className='block text-gray-600 font-medium mb-2'>Price Range</label>
             <input type='range' name='price range' 
-            min={0} 
-            max={2000}
+            min={10} 
+            max={100}
             value={priceRange[1]}
             onChange={handlePriceChange}
              className='w-full h-2 bg-gray-300 rounded-lg cursor-pointer'/>
              <div className='flex justify-between text-gray-600 mt-2'>
-                <span>₹ 300</span>
-                <span>₹{priceRange[1]}</span>
+                <span>$10</span>
+                <span>${priceRange[1]}</span>
              </div>
         </div>
     </div>

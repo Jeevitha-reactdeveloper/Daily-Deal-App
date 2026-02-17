@@ -188,10 +188,11 @@ router.get('/', async(req,res) =>{
 router.post('/merge',protectedRoute, async (req,res) =>{
     try {
         const {guestId} = req.body;
-         
+        const userId = req.user._id;
+
         //Find the guest card and user cart
         const guestCart = await Cart.findOne({guestId});
-        const userCart = await Cart.findOne({user : user_id});
+        const userCart = await Cart.findOne({user : userId});
 
         if(guestCart){
             if(guestCart.products.length === 0){

@@ -1,10 +1,20 @@
 import express from "express";
 import cors from "cors";
 import dotenv from 'dotenv';
-import connectDB from './config/db.js'
-import userRoutes from './routes/user.route.js'
-import productRoute from './routes/product.route.js'
-import cartRoute from './routes/cart.route.js'
+import connectDB from './config/db.js';
+import userRoutes from './routes/user.route.js';
+import productRoute from './routes/product.route.js';
+import cartRoutes from './routes/cart.route.js';
+import checkoutRoutes from "./routes/checkout.route.js";
+import orderRoutes from "./routes/order.route.js";
+import uploadRoutes from './routes/upload.route.js';
+import subscribeRoutes from './routes/subscriber.route.js';
+import adminRoutes from './routes/admin.route.js';
+import productAdminRoutes from './routes/productadmin.routes.js';
+import orderAdminRoutes from './routes/adminorder.route.js'
+
+
+
 
 
 const app = express();
@@ -25,7 +35,17 @@ app.get("/",(req,res) =>{
 // API Routes
 app.use('/api/users',userRoutes);
 app.use("/api/products", productRoute);
-app.use("/api/cart", cartRoute);
+app.use("/api/cart", cartRoutes);
+app.use("/api/checkout", checkoutRoutes);
+app.use("/api/orders",orderRoutes);
+app.use("/api/upload",uploadRoutes);
+app.use("/api",subscribeRoutes);
+app.use('/api/admin/users',adminRoutes);
+app.use("/api/admin/products",productAdminRoutes);
+app.use("/api/admin/orders",orderAdminRoutes);
+
+
+
 
 
 

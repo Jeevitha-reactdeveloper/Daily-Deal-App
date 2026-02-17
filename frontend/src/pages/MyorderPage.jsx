@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { fetchUserOrders } from '../redux/slices/orderSlice';
 
 const MyorderPage = () => {
-    const[orders,setOrders] = useState([]);
-    const navigate = useNavigate()
+/*     const[orders,setOrders] = useState([]);
+ */    const navigate = useNavigate();
+        const dispatch = useDispatch();
+        const {orders,error} = useSelector((state) => state.orders);
 
-    useEffect(() =>{
+        useEffect(() =>{
+            dispatch(fetchUserOrders())
+        },[dispatch]);
+
+    /* useEffect(() =>{
         setTimeout(()=>{
             const mockOrders = [
                 {
@@ -36,9 +44,13 @@ const MyorderPage = () => {
             setOrders(mockOrders);
         },1000)
     },[])
-
+ */
     const handleRowClick = (orderId) =>{
         navigate(`/order/${orderId}`)
+    }
+
+    if(error){
+        return <p>Error : {error}</p>
     }
   return (
     <div className='max-w-7xl mx-auto p-4 sm:p-6'>
@@ -68,7 +80,7 @@ const MyorderPage = () => {
                                 <td className='p-2  sm:p-4 '>
                                     <img 
                                     className='w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-lg'
-                                    src={order.OrderedItems[0].image} alt={order.OrderedItems[0].name}/>
+                                    src={order.OrderedItems?.[0].image} alt={order.OrderedItems?.[0].name}/>
                                 </td>
                                 <td className='p-2 sm:p-4  font-medium text-gray-900 whitespace-nowrap'>
                                     #{order._id}
@@ -81,8 +93,8 @@ const MyorderPage = () => {
                                 <td className='p-2 sm:p-4'>
                                     {order.shippingAddress ?  `${order.shippingAddress.city}, ${order.shippingAddress.country}` : "N/A" }
                                 </td>
-                                <td className='p-2 sm:p-4'>{order.OrderedItems.length}</td>
-                                <td className='p-2 sm:p-4'>₹{order.totalPrice}</td>
+                                <td className='p-2 sm:p-4'>{order.OrderedItems?.length}</td>
+                                <td className='p-2 sm:p-4'>${order.totalPrice}</td>
                                 <td className='p-2 sm:p-4'>
                                     <span 
                                     className={`${order.isPaid ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"} px-2  py-1 rounded-full text-xs  sm:text-sm font-medium` }>

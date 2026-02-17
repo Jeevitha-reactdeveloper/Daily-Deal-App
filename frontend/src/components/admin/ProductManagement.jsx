@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
+import { deleteProduct, fetchAdminProducts } from '../../redux/slices/adminProductslice';
 
 const ProductManagement = () => {
 
-    const products = [
+   /*  const products = [
         {
             _id : 21456,
             name : "Shirt",
@@ -11,13 +13,23 @@ const ProductManagement = () => {
             SKU : "24789067890",
 
         }
-    ]
+    ] */
+    const dispatch = useDispatch();
+    const {products,loading,error} = useSelector((state) => state.adminProducts);
 
-    const handleDelete = (productID) =>{
+    useEffect(()=>{
+        dispatch(fetchAdminProducts());
+    },[dispatch]);
+
+    const handleDelete = (id) =>{
         if(window.confirm("Are you sure you want to delete the Product?")){
-            console.log("Delete Product with product id:",id);
-        }
-    }
+/*             console.log("Delete Product with product id:",id);
+ */       dispatch(deleteProduct(id))
+         }
+    };
+
+    if(loading) return <p>Loading...</p>
+    if(error) return <p>Error: {error}</p>
   return (
     <div className='max-w-7xl mx-auto p-6'>
         <h2 className='text-2xl font-bold mb-6'>Product Management</h2>
@@ -40,8 +52,8 @@ const ProductManagement = () => {
                                 <td className='p-4 font-medium text-gray-900 whitespace-nowrap'>
                                     {product.name}
                                 </td>
-                                <td className='p-4'>₹ {product.price}</td>
-                                <td className='p-4'>₹ {product.SKU}</td>
+                                <td className='p-4'>$ {product.price}</td>
+                                <td className='p-4'>{product.sku}</td>
                                 <td className='p-4'><Link 
                                 to = {`/admin/products/${product._id}/edit`}
                                 className = "bg-yellow-500 text-white px-2 py-1 rounded mr-2 hover:bg-yellow-600">

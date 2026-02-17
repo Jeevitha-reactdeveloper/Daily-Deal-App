@@ -18,11 +18,11 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=39",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770974969/blueshirt_dhvjcc.jpg",
         altText: "Classic Oxford Button-Down Shirt Front View",
       },
       {
-        url: "https://picsum.photos/500/500?random=40",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770974967/nimble-made-_PFanxhwe4o-unsplash_ovdzlk.jpg",
         altText: "Classic Oxford Button-Down Shirt Back View",
       },
     ],
@@ -46,13 +46,10 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=41",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770974966/denim1_lycgma.jpg",
         altText: "Slim-Fit Stretch Shirt Front View",
       },
-      {
-        url: "https://picsum.photos/500/500?random=42",
-        altText: "Slim-Fit Stretch Shirt Back View",
-      },
+      
     ],
     rating: 4.8,
     numReviews: 15,
@@ -66,7 +63,7 @@ const products = [
     countInStock: 15,
     sku: "CAS-DEN-003",
     category: "Top Wear",
-    brand: "Street Style",
+    brand: "Allen Solly",
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["Light Blue", "Dark Wash"],
     collections: "Casual Wear",
@@ -74,11 +71,11 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=43",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770974966/denim1_lycgma.jpg",
         altText: "Casual Denim Shirt Front View",
       },
       {
-        url: "https://picsum.photos/500/500?random=44",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770974982/denim2_gasgz4.jpg",
         altText: "Casual Denim Shirt Back View",
       },
     ],
@@ -94,7 +91,7 @@ const products = [
     countInStock: 25,
     sku: "PRNT-RES-004",
     category: "Top Wear",
-    brand: "Beach Breeze",
+    brand: "Peter England",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Tropical Print", "Navy Palms"],
     collections: "Vacation Wear",
@@ -102,11 +99,11 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=45",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1759071533/samples/smile.jpg",
         altText: "Printed Resort Shirt Front View",
       },
       {
-        url: "https://picsum.photos/500/500?random=1",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1759071533/samples/smile.jpg",
         altText: "Printed Resort Shirt Back View",
       },
     ],
@@ -122,7 +119,7 @@ const products = [
     countInStock: 30,
     sku: "SLIM-EIR-005",
     category: "Top Wear",
-    brand: "Urban Chic",
+    brand: "Fashion Studio",
     sizes: ["S", "M", "L", "XL"],
     colors: ["White", "Gray"],
     collections: "Business Wear",
@@ -130,44 +127,16 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=47",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770974967/nimble-made-_PFanxhwe4o-unsplash_ovdzlk.jpg",
         altText: "Slim-Fit Easy-Iron Shirt Front View",
       },
       {
-        url: "https://picsum.photos/500/500?random=2",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770974967/nimble-made-_PFanxhwe4o-unsplash_ovdzlk.jpg",
         altText: "Slim-Fit Easy-Iron Shirt Front View",
       },
     ],
     rating: 5,
     numReviews: 14,
-  },
-  {
-    name: "Polo T-Shirt with Ribbed Collar",
-    description:
-      "A wardrobe classic, this polo t-shirt features a ribbed collar and cuffs. Made from 100% cotton, it offers breathability and comfort throughout the day. Tailored in a slim fit with a button placket at the neckline.",
-    price: 24.99,
-    discountPrice: 19.99,
-    countInStock: 50,
-    sku: "POLO-TSH-006",
-    category: "Top Wear",
-    brand: "Polo Classics",
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["White", "Navy", "Red"],
-    collections: "Casual Wear",
-    material: "Cotton",
-    gender: "Men",
-    images: [
-      {
-        url: "https://picsum.photos/500/500?random=3",
-        altText: "Polo T-Shirt Front View",
-      },
-      {
-        url: "https://picsum.photos/500/500?random=4",
-        altText: "Polo T-Shirt Back View",
-      },
-    ],
-    rating: 4.3,
-    numReviews: 22,
   },
   {
     name: "Oversized Graphic T-Shirt",
@@ -178,7 +147,7 @@ const products = [
     countInStock: 40,
     sku: "OVS-GRF-007",
     category: "Top Wear",
-    brand: "Street Vibes",
+    brand: "Allen Solly",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Black", "Gray"],
     collections: "Streetwear",
@@ -186,84 +155,12 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=5",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770976273/phil-monte-4V4t0JcOM5E-unsplash_jqrk7f.jpg",
         altText: "Oversized Graphic T-Shirt Front View",
       },
     ],
     rating: 4.6,
     numReviews: 30,
-  },
-  {
-    name: "Regular-Fit Henley Shirt",
-    description:
-      "A modern take on the classic Henley shirt, this regular-fit style features a buttoned placket and ribbed cuffs. Made from a soft cotton blend with a touch of elastane for stretch.",
-    price: 22.99,
-    discountPrice: 18.99,
-    countInStock: 35,
-    sku: "REG-HEN-008",
-    category: "Top Wear",
-    brand: "Heritage Wear",
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["Heather Gray", "Olive", "Black"],
-    collections: "Casual Wear",
-    material: "Cotton Blend",
-    gender: "Men",
-    images: [
-      {
-        url: "https://picsum.photos/500/500?random=6",
-        altText: "Regular-Fit Henley Shirt Front View",
-      },
-    ],
-    rating: 4.5,
-    numReviews: 25,
-  },
-  {
-    name: "Long-Sleeve Thermal Tee",
-    description:
-      "Stay warm with this long-sleeve thermal tee, made from soft cotton with a waffle-knit texture. Ideal for layering in cooler months, the slim-fit design ensures a snug yet comfortable fit.",
-    price: 27.99,
-    discountPrice: 22.99,
-    countInStock: 20,
-    sku: "LST-THR-009",
-    category: "Top Wear",
-    brand: "Winter Basics",
-    sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["Charcoal", "Dark Green", "Navy"],
-    collections: "Winter Essentials",
-    material: "Cotton",
-    gender: "Men",
-    images: [
-      {
-        url: "https://picsum.photos/500/500?random=7",
-        altText: "Long-Sleeve Thermal Tee Front View",
-      },
-    ],
-    rating: 4.4,
-    numReviews: 18,
-  },
-  {
-    name: "V-Neck Classic T-Shirt",
-    description:
-      "A classic V-neck t-shirt for everyday wear. This regular-fit tee is made from breathable cotton and features a clean, simple design with a flattering V-neckline. Lightweight fabric and soft texture make it perfect for casual looks.",
-    price: 14.99,
-    discountPrice: 11.99,
-    countInStock: 60,
-    sku: "VNECK-CLS-010",
-    category: "Top Wear",
-    brand: "Everyday Comfort",
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["White", "Black", "Navy"],
-    collections: "Basics",
-    material: "Cotton",
-    gender: "Men",
-    images: [
-      {
-        url: "https://picsum.photos/500/500?random=8",
-        altText: "V-Neck Classic T-Shirt Front View",
-      },
-    ],
-    rating: 4.7,
-    numReviews: 28,
   },
   {
     name: "Slim Fit Joggers",
@@ -274,7 +171,7 @@ const products = [
     countInStock: 20,
     sku: "BW-001",
     category: "Bottom Wear",
-    brand: "ActiveWear",
+    brand: "Peter England",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Black", "Gray", "Navy"],
     collections: "Casual Collection",
@@ -282,7 +179,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=9",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978146/tuananh-blue-muo8Zdkz_4w-unsplash_fbs4nw.jpg",
         altText: "Slim Fit Joggers Front View",
       },
     ],
@@ -298,7 +195,7 @@ const products = [
     countInStock: 15,
     sku: "BW-002",
     category: "Bottom Wear",
-    brand: "UrbanStyle",
+    brand: "Urban Threads",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Olive", "Black"],
     collections: "Urban Collection",
@@ -306,7 +203,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=10",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978145/redd-francisco-jC7nVH_Sw8k-unsplash_zjm7jr.jpg",
         altText: "Cargo Joggers Front View",
       },
     ],
@@ -322,7 +219,7 @@ const products = [
     countInStock: 25,
     sku: "BW-003",
     category: "Bottom Wear",
-    brand: "ChillZone",
+    brand: "Modern Fit",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Gray", "Charcoal", "Blue"],
     collections: "Lounge Collection",
@@ -330,7 +227,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=11",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978132/clem-onojeghuo-kg3N8vqvMd8-unsplash_kwlnlx.jpg",
         altText: "Tapered Sweatpants Front View",
       },
     ],
@@ -346,7 +243,7 @@ const products = [
     countInStock: 30,
     sku: "BW-004",
     category: "Bottom Wear",
-    brand: "DenimCo",
+    brand: "Fashion Studio",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Dark Blue", "Light Blue"],
     collections: "Denim Collection",
@@ -354,7 +251,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=12",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978144/eduardo-pastor-3oejsU5OQVk-unsplash_sokife.jpg",
         altText: "Denim Jeans Front View",
       },
     ],
@@ -370,7 +267,7 @@ const products = [
     countInStock: 40,
     sku: "BW-005",
     category: "Bottom Wear",
-    brand: "CasualLook",
+    brand: "Modern Fit",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Beige", "Navy", "Black"],
     collections: "Smart Casual Collection",
@@ -378,7 +275,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=13",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978144/santhosh-vaithiyanathan-ylHcWlrMlzs-unsplash_rfw9nb.jpg",
         altText: "Chino Pants Front View",
       },
     ],
@@ -394,7 +291,7 @@ const products = [
     countInStock: 20,
     sku: "BW-006",
     category: "Bottom Wear",
-    brand: "SportX",
+    brand: "Allen Solly",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Black", "Red", "Blue"],
     collections: "Activewear Collection",
@@ -402,7 +299,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=14",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978472/denim1_eb8j9t.jpg",
         altText: "Track Pants Front View",
       },
     ],
@@ -418,7 +315,7 @@ const products = [
     countInStock: 15,
     sku: "BW-007",
     category: "Bottom Wear",
-    brand: "ExecutiveStyle",
+    brand: "Fashion Studio",
     sizes: ["M", "L", "XL"],
     colors: ["Gray", "Black"],
     collections: "Office Wear",
@@ -426,7 +323,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=15",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978144/santhosh-vaithiyanathan-ylHcWlrMlzs-unsplash_rfw9nb.jpg",
         altText: "Slim Fit Trousers Front View",
       },
     ],
@@ -442,7 +339,7 @@ const products = [
     countInStock: 25,
     sku: "BW-008",
     category: "Bottom Wear",
-    brand: "StreetWear",
+    brand: "Urban Threads",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Olive", "Brown", "Black"],
     collections: "Street Style Collection",
@@ -450,60 +347,12 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=16",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978132/clem-onojeghuo-kg3N8vqvMd8-unsplash_kwlnlx.jpg",
         altText: "Cargo Pants Front View",
       },
     ],
     rating: 4.5,
     numReviews: 13,
-  },
-  {
-    name: "Relaxed Fit Sweatpants",
-    description:
-      "Relaxed-fit sweatpants made from soft fleece fabric. Features an elastic waist and adjustable drawstring for a custom fit.",
-    price: 35,
-    discountPrice: 30,
-    countInStock: 35,
-    sku: "BW-009",
-    category: "Bottom Wear",
-    brand: "LoungeWear",
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["Gray", "Black", "Navy"],
-    collections: "Lounge Collection",
-    material: "Fleece",
-    gender: "Men",
-    images: [
-      {
-        url: "https://picsum.photos/500/500?random=17",
-        altText: "Relaxed Fit Sweatpants Front View",
-      },
-    ],
-    rating: 4.3,
-    numReviews: 14,
-  },
-  {
-    name: "Formal Dress Pants",
-    description:
-      "Classic formal dress pants with a slim fit. Made from lightweight, wrinkle-resistant fabric for a polished look at the office or formal events.",
-    price: 70,
-    discountPrice: 60,
-    countInStock: 20,
-    sku: "BW-010",
-    category: "Bottom Wear",
-    brand: "ElegantStyle",
-    sizes: ["M", "L", "XL"],
-    colors: ["Black", "Navy"],
-    collections: "Formal Collection",
-    material: "Polyester",
-    gender: "Men",
-    images: [
-      {
-        url: "https://picsum.photos/500/500?random=18",
-        altText: "Formal Dress Pants Front View",
-      },
-    ],
-    rating: 4.9,
-    numReviews: 8,
   },
   {
     name: "High-Waist Skinny Jeans",
@@ -514,7 +363,7 @@ const products = [
     countInStock: 30,
     sku: "BW-W-001",
     category: "Bottom Wear",
-    brand: "DenimStyle",
+    brand: "Fashion Studio",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: ["Dark Blue", "Black", "Light Blue"],
     collections: "Denim Collection",
@@ -522,7 +371,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=19",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978127/engin-akyurt-ahs1R32GG9Y-unsplash_esxqva.jpg",
         altText: "High-Waist Skinny Jeans",
       },
     ],
@@ -538,7 +387,7 @@ const products = [
     countInStock: 25,
     sku: "BW-W-002",
     category: "Bottom Wear",
-    brand: "ElegantWear",
+    brand: "Modern Fit",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Beige", "Black", "White"],
     collections: "Formal Collection",
@@ -546,7 +395,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=20",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978125/katarina-milosevic-R3KsTl9SG-U-unsplash_nulthn.jpg",
         altText: "Wide-Leg Trousers Front View",
       },
     ],
@@ -562,7 +411,7 @@ const products = [
     countInStock: 40,
     sku: "BW-W-003",
     category: "Bottom Wear",
-    brand: "ComfyFit",
+    brand: "Comfy Fit",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Black", "Gray", "Navy"],
     collections: "Activewear Collection",
@@ -570,7 +419,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=21",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978131/engin-akyurt-D3pnJMIeBLk-unsplash_bydhlv.jpg",
         altText: "Stretch Leggings Front View",
       },
     ],
@@ -586,7 +435,7 @@ const products = [
     countInStock: 20,
     sku: "BW-W-004",
     category: "Bottom Wear",
-    brand: "ChicStyle",
+    brand: "Comfy Fit",
     sizes: ["S", "M", "L"],
     colors: ["Pink", "Navy", "Black"],
     collections: "Spring Collection",
@@ -594,7 +443,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=22",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978126/engin-akyurt-5raPrOhbKQo-unsplash_1_hhauwf.jpg",
         altText: "Pleated Midi Skirt Front View",
       },
     ],
@@ -610,7 +459,7 @@ const products = [
     countInStock: 35,
     sku: "BW-W-005",
     category: "Bottom Wear",
-    brand: "BreezyVibes",
+    brand: "Fashion Studio",
     sizes: ["S", "M", "L", "XL"],
     colors: ["White", "Beige", "Light Blue"],
     collections: "Summer Collection",
@@ -618,7 +467,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=23",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978144/engin-akyurt-RSm7GBuMqos-unsplash_zsppho.jpg",
         altText: "Flared Palazzo Pants Front View",
       },
     ],
@@ -634,7 +483,7 @@ const products = [
     countInStock: 30,
     sku: "BW-W-006",
     category: "Bottom Wear",
-    brand: "ActiveWear",
+    brand: "Modern Fit",
     sizes: ["XS", "S", "M", "L"],
     colors: ["Black", "Gray", "Pink"],
     collections: "Loungewear Collection",
@@ -642,7 +491,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=24",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978176/portrait-fashionable-confident-business-woman_u8odwk.jpg",
         altText: "High-Rise Joggers Front View",
       },
     ],
@@ -658,7 +507,7 @@ const products = [
     countInStock: 20,
     sku: "BW-W-007",
     category: "Bottom Wear",
-    brand: "SunnyStyle",
+    brand: "Urban Threads",
     sizes: ["S", "M", "L"],
     colors: ["White", "Khaki", "Blue"],
     collections: "Summer Collection",
@@ -666,7 +515,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=25",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978173/christian-bolt-VW5VjskNXZ8-unsplash_utcf5q.jpg",
         altText: "Paperbag Waist Shorts Front View",
       },
     ],
@@ -682,7 +531,7 @@ const products = [
     countInStock: 25,
     sku: "BW-W-008",
     category: "Bottom Wear",
-    brand: "DenimStyle",
+    brand: "Fashion Studio",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Blue", "Black", "White"],
     collections: "Denim Collection",
@@ -690,7 +539,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=26",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978163/tim-bernhard-2kfKqVm1vQc-unsplash_rt36nu.jpg",
         altText: "Stretch Denim Shorts Front View",
       },
     ],
@@ -706,7 +555,7 @@ const products = [
     countInStock: 30,
     sku: "BW-W-009",
     category: "Bottom Wear",
-    brand: "ChicStyle",
+    brand: "Urban Threads",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Black", "White", "Olive"],
     collections: "Casual Collection",
@@ -714,7 +563,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=27",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978161/woman-posing_feri42.jpg",
         altText: "Culottes Front View",
       },
     ],
@@ -730,7 +579,7 @@ const products = [
     countInStock: 25,
     sku: "BW-W-010",
     category: "Bottom Wear",
-    brand: "ElegantWear",
+    brand: "Modern Fit",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Navy", "Black", "Gray"],
     collections: "Formal Collection",
@@ -738,7 +587,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=28",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770978126/engin-akyurt-5raPrOhbKQo-unsplash_1_hhauwf.jpg",
         altText: "Classic Pleated Trousers Front View",
       },
     ],
@@ -754,7 +603,7 @@ const products = [
     countInStock: 25,
     sku: "TW-W-001",
     category: "Top Wear",
-    brand: "ChicKnit",
+    brand: "Comfy Fit",
     sizes: ["S", "M", "L"],
     colors: ["Beige", "White"],
     collections: "Knits Collection",
@@ -762,7 +611,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=29",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770976979/keagan-henman-xPJYL0l5Ii8-unsplash_csj5rl.jpg",
         altText: "Knitted Cropped Top",
       },
     ],
@@ -778,7 +627,7 @@ const products = [
     countInStock: 30,
     sku: "TW-W-002",
     category: "Top Wear",
-    brand: "BohoVibes",
+    brand: "Urban Threads",
     sizes: ["S", "M", "L", "XL"],
     colors: ["White", "Pink"],
     collections: "Summer Collection",
@@ -786,7 +635,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=30",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770976974/christian-bolt-VW5VjskNXZ8-unsplash_nlo5e4.jpg",
         altText: "Boho Floral Blouse",
       },
     ],
@@ -802,7 +651,7 @@ const products = [
     countInStock: 50,
     sku: "TW-W-003",
     category: "Top Wear",
-    brand: "ComfyTees",
+    brand: "Comfy Fit",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Black", "White", "Gray"],
     collections: "Essentials",
@@ -810,7 +659,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=31",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770976975/haryo-setyadi-acn5ERAeSb4-unsplash_xywhao.jpg",
         altText: "Casual T-Shirt",
       },
     ],
@@ -834,7 +683,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=32",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770976698/laura-chouette-JoM9rbc_Rxg-unsplash_lc0gh1.jpg",
         altText: "Off-Shoulder Top",
       },
     ],
@@ -850,7 +699,7 @@ const products = [
     countInStock: 40,
     sku: "TW-W-005",
     category: "Top Wear",
-    brand: "DelicateWear",
+    brand: "Elegance",
     sizes: ["S", "M", "L"],
     colors: ["Black", "White"],
     collections: "Lingerie-Inspired",
@@ -858,7 +707,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=33",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770976689/ayo-ogunseinde-UqT55tGBqzI-unsplash_vtoblu.jpg",
         altText: "Lace-Trimmed Cami Top",
       },
     ],
@@ -874,7 +723,7 @@ const products = [
     countInStock: 45,
     sku: "TW-W-006",
     category: "Top Wear",
-    brand: "StreetStyle",
+    brand: "Elegance",
     sizes: ["S", "M", "L", "XL"],
     colors: ["White", "Black"],
     collections: "Urban Collection",
@@ -882,7 +731,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=34",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770976689/ian-dooley-TT-ROxWj9nA-unsplash_bgdrfa.jpg",
         altText: "Graphic Print Tee",
       },
     ],
@@ -898,7 +747,7 @@ const products = [
     countInStock: 30,
     sku: "TW-W-007",
     category: "Top Wear",
-    brand: "ComfortFit",
+    brand: "Comfy Fit",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Gray", "Pink", "Brown"],
     collections: "Fall Collection",
@@ -906,7 +755,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=35",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770976689/imana-DhqQdAzmhhI-unsplash_oszm2i.jpg",
         altText: "Ribbed Long-Sleeve Top",
       },
     ],
@@ -922,7 +771,7 @@ const products = [
     countInStock: 20,
     sku: "TW-W-008",
     category: "Top Wear",
-    brand: "FeminineWear",
+    brand: "Elegance",
     sizes: ["S", "M", "L"],
     colors: ["White", "Navy", "Lavender"],
     collections: "Summer Collection",
@@ -930,7 +779,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=36",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770976263/allef-vinicius-r1btMgyLXGc-unsplash_ecldkv.jpg",
         altText: "Ruffle-Sleeve Blouse",
       },
     ],
@@ -946,7 +795,7 @@ const products = [
     countInStock: 25,
     sku: "TW-W-009",
     category: "Top Wear",
-    brand: "ClassicStyle",
+    brand: "Elegance",
     sizes: ["S", "M", "L", "XL"],
     colors: ["White", "Light Blue", "Black"],
     collections: "Office Collection",
@@ -954,7 +803,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=37",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770976273/imana-O_14r4IYje8-unsplash_cpv3rz.jpg",
         altText: "Classic Button-Up Shirt",
       },
     ],
@@ -970,7 +819,7 @@ const products = [
     countInStock: 30,
     sku: "TW-W-010",
     category: "Top Wear",
-    brand: "ChicWrap",
+    brand: "Comfy Fit",
     sizes: ["S", "M", "L"],
     colors: ["Red", "Black", "White"],
     collections: "Evening Collection",
@@ -978,7 +827,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=38",
+        url: "https://res.cloudinary.com/do6nab3bj/image/upload/v1770976268/imana-7Hp-iOF8TNE-unsplash_dfacud.jpg",
         altText: "V-Neck Wrap Top",
       },
     ],

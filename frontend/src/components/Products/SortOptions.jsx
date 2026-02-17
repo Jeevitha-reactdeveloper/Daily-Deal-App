@@ -12,7 +12,7 @@ export const SortOptions = () => {
   return (
     <div className='mb-4 flex items-center justify-end'>
         <select id='sort'
-        value={searchParams.get("sortBy" || "")}
+        value={searchParams.get("sortBy") || ""}
         onChange={handlesortChange}
          className='border p-2 rounded-md focus:outline-none'>
             <option value="">Default</option>

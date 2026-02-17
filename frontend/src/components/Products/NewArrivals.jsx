@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { FaAngleLeft } from "react-icons/fa";
 import { FaAngleRight } from 'react-icons/fa6';
@@ -13,7 +14,22 @@ const NewArrivals = () => {
     const [canScrollRight,setCanScrollRight] = useState(true);
     const [canScrollLeft,setCanScrollLeft] = useState(false);
 
-    const newArrivals = [
+    const [newArrivals,setNewArrivals] = useState([]);
+
+    useEffect(() =>{
+        const fetchNewArrivals = async () =>{
+            try {
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products/new-arrivals`);
+                setNewArrivals(response.data);
+            } catch (error) {
+                console.error(error);
+
+            }
+        };
+        fetchNewArrivals();
+    },[]);
+
+    /* const newArrivals = [
         {
             _id : "1",
             name : "Stylish Jacket",
@@ -111,7 +127,7 @@ const NewArrivals = () => {
             ]
         },
     ];
-
+ */
     const handleMouseDown = (e) =>{
         setIsDragging(true);
         setStartX(e.pageX - scrollRef.current.offsetLeft);
@@ -163,7 +179,7 @@ const NewArrivals = () => {
         }
         updateScrollButtons();
         return () => container.removeEventListener("scroll",updateScrollButtons);
-    },[])
+    },[newArrivals])
   return (
     <section className='py-16 px-4 lg:px-0'>
         <div className='relative container mx-auto text-center mb-10' >
@@ -193,23 +209,24 @@ const NewArrivals = () => {
         >
             {newArrivals.map((product)=>{
                 return (
-                    <>
-                        <div key={product._id} className='min-w-full sm:min-w-1/2 lg:min-w-1/3 relative'>
+                    
+                    <div key={product._id} className='min-w-full sm:min-w-1/2 lg:min-w-1/3 relative'>
+                        {product.images?.[0]?.url && (
+
                             <img src={product.images[0]?.url} alt={product.images[0]?.altText}
                              className='w-full h-75 object-cover rounded'
                              draggable="false"
-                             />
-                             <div className='absolute bottom-0 left-0 right-0 bg-opacity-50 backdrop-blur-md text-white p-4 rounded-b-lg'>
-                            <Link to ={`/product/${product._id}`} className="block">
-                            <h4 className='font-medium'>{product.name}</h4>
-                            <p className='mt-1'>₹{product.price}</p>
-                            </Link>
+                            />
+                        )}
+                            <div className='absolute bottom-0 left-0 right-0 bg-opacity-50 backdrop-blur-md text-white p-4 rounded-b-lg'>
+                                <Link to ={`/product/${product._id}`} className="block">
+                                    <h4 className='font-medium'>{product.name}</h4>
+                                    <p className='mt-1'>${product.price}</p>
+                                </Link>
 
-                        </div>
-                        </div>
+                            </div>
                         
-                       
-                    </>
+                    </div>
                 )
 
             })}

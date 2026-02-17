@@ -13,7 +13,7 @@ const Features = () => {
                 />
             </div>
             <h4 className='tracking-tighter mb-2 uppercase'>Free International Shipping.</h4>
-            <p className='text-gray-600 text-sm tracking-tighter'>On all orders over ₹ 50,000</p>
+            <p className='text-gray-600 text-sm tracking-tighter'>On all orders over $ 20,000</p>
         </div>
          {/* Feature 2 */}
         <div className='flex flex-col items-center'>

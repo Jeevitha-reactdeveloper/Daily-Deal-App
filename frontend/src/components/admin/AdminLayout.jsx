@@ -23,7 +23,6 @@ const AdminLayout = () => {
         {isSidebarOpen && (
             <div className='fixed inset-0  z-10 bg-black bg-opacity-50 md:hidden' 
             onClick={toggleSidebar}>
-
             </div>
         )}
 
