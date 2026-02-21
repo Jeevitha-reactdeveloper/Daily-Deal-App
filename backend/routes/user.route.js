@@ -14,8 +14,8 @@ const router = express.Router();
 
     try {
         const {name,email,password} = req.body;
-        console.log("REGISTER ROUTE HIT", req.body); //  check this
-
+        /* console.log("REGISTER ROUTE HIT", req.body); //  check this
+ */
         let user = await User.findOne({email})
 
         if(user){

@@ -167,8 +167,8 @@ router.delete('/',async (req,res) =>{
 router.get('/', async(req,res) =>{
     try {
         const {userId,guestId} = req.query;
-        console.log("QUERY PARAMS:", req.query);
-
+/*         console.log("QUERY PARAMS:", req.query);
+ */
         const cart = await getCart(userId,guestId);
         if(cart){
             res.status(200).json(cart);

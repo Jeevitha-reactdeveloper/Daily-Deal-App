@@ -13,8 +13,8 @@ const router = express.Router();
 
 router.post('/',protectedRoute, async (req,res) =>{
     const {checkoutItems,shippingAddress,paymentMethod,totalPrice} = req.body;
-     console.log("👉 Checkout API HIT");
-  console.log("👉 BODY:", req.body);
+    /*  console.log("👉 Checkout API HIT");
+  console.log("👉 BODY:", req.body); */
     if(!checkoutItems || checkoutItems.length === 0){
         return res.status(400).json({message : "no items in checkout"})
     }
@@ -31,8 +31,8 @@ router.post('/',protectedRoute, async (req,res) =>{
             paymentStatus : "Pending",
             isPaid : false
         });
-        console.log(`Checkout created for user: ${req.user._id}`);
-        res.status(201).json(newCheckout);
+/*         console.log(`Checkout created for user: ${req.user._id}`);
+ */        res.status(201).json(newCheckout);
     } catch (error) {
         console.error("Error creating checkout session:",error);
         res.status(500).json({message : "server error"})
@@ -78,7 +78,7 @@ router.put("/:id/pay",protectedRoute, async(req,res)=>{
 router.post("/:id/finalize",protectedRoute, async(req,res)=>{
     try {
         const checkout = await Checkout.findById(req.params.id);
-        console.log("hitted finalize route")
+        /* console.log("hitted finalize route") */
         if(!checkout){
             return res.status(404).json({message : "Checkout not found"});
         }

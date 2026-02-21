@@ -243,8 +243,8 @@ router.get("/", async (req,res)=>{
             }
 
             //Fetch products and apply sorting and limit
-            console.log("REQ QUERY:", req.query);
-console.log("MONGO QUERY:", query);
+/*             console.log("REQ QUERY:", req.query);
+ */console.log("MONGO QUERY:", query);
 
             let products = await Product.find(query).sort(sort).limit(Number(limit) ||  0);
             res.json(products);
@@ -327,8 +327,8 @@ router.get('/new-arrivals', async (req,res) =>{
  router.get('/similar/:id', async (req,res) =>{
     try{
         const {id} = req.params;
-        console.log(id);
-        const product = await Product.findById(id);
+/*         console.log(id);
+ */        const product = await Product.findById(id);
 
         if(!product){
             return res.status(404).json({message : "Product not found"});
