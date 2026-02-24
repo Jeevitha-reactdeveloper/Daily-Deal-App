@@ -97,4 +97,5 @@ CLOUDINARY_API_SECRET=
 ## 👩‍💻 Author
 
 Jeevitha
+
 LinkedIn: https://www.linkedin.com/in/jeevitha-frontenddeveloper/
