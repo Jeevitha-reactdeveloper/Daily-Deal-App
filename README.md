@@ -44,7 +44,7 @@ Backend API: https://daily-deal-app.vercel.app/
 ## ⚙️ Installation & Setup
 
 ### 1️⃣ Clone the repository
-
+ git clone https://github.com/Jeevitha-reactdeveloper/Daily-Deal-App.git
 
 ### 2️⃣ Install dependencies
 
