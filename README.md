@@ -7,6 +7,7 @@ Users can browse products, add to cart, place orders, and manage authentication.
 
 ## 🔗 Live Demo
 Frontend: https://daily-deal-app-shfy.vercel.app/ 
+
 Backend API: https://daily-deal-app.vercel.app/
 
 ---
@@ -60,12 +61,19 @@ Backend:
 ## 🔐 Environment Variables
 
 Create a `.env` file in backend:
+
 PORT = 
+
 MONGO_URI = 
+
 JWT_SECRET =
+
 CLOUDINARY_CLOUD_NAME=
+
 CLOUDINARY_API_KEY=
+
 CLOUDINARY_API_SECRET=
+
 ---
 
 ## 🎯 What I Learned
