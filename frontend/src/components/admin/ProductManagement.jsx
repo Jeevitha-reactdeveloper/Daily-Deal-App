@@ -31,11 +31,11 @@ const ProductManagement = () => {
     if(loading) return <p>Loading...</p>
     if(error) return <p>Error: {error}</p>
   return (
-    <div className='max-w-7xl mx-auto p-6'>
+    <div className='max-w-7xl mx-auto p-6 bg-white'>
         <h2 className='text-2xl font-bold mb-6'>Product Management</h2>
         <div className='overflow-x-auto shadow-md sm:rounded-lg'>
-            <table className='min-w-full text-left text-gray-500 '>
-                <thead className='bg-gray-100 text-xs uppercase text-gray-700'>
+            <table className='min-w-full text-left '>
+                <thead className=' text-xs uppercase'>
                     <tr>
                         <th className='py-3 px-4'>Name</th>
                         <th className='py-3 px-4'>Price</th>
@@ -49,7 +49,7 @@ const ProductManagement = () => {
                     {products.length > 0 ? (products.map((product)=>{
                         return(
                             <tr key={product._id} className='border-b hover:bg-gray-50 cursor-pointer'> 
-                                <td className='p-4 font-medium text-gray-900 whitespace-nowrap'>
+                                <td className='p-4 font-medium text-gray-900 '>
                                     {product.name}
                                 </td>
                                 <td className='p-4'>$ {product.price}</td>
@@ -65,7 +65,7 @@ const ProductManagement = () => {
 
                             </tr>
                         )
-                    })) : (<tr colSpan = {4} className='p-4 text-center text-gray-500'>No products found</tr>)}
+                    })) : (<tr><td colSpan = {4} className='p-4 text-center text-gray-500'>No products found</td></tr>)}
                 </tbody>
             </table>
         </div>
