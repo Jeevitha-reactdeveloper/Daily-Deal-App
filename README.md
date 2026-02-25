@@ -117,7 +117,7 @@ Complete order flow with user details and order confirmation.
 ### 👤 User Profile
 Users can manage personal details and view their order history.
 
-![Profile Page](./screenshots/profilepage.png)
+![Profile Page](./screenshots/profile.png)
 
 ---
 
