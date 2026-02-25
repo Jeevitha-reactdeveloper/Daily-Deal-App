@@ -90,7 +90,41 @@ CLOUDINARY_API_SECRET=
 
 ## 📸 Screenshots
 
-(Add screenshots here)
+### 🏠 Home Page – Product Listing
+Displays all available products with filtering options and responsive layout.
+
+![Home Page](./screenshots/homepage.png)
+
+---
+
+### 🔐 User Authentication – Login & Signup
+Secure authentication system with JWT-based login and protected routes.
+
+### 🛒 Shopping Cart
+Users can add products to cart, update quantity, and review selected items before checkout.
+
+![Cart Page](./screenshots/productpage.png)
+
+---
+
+### 📦 Order Placement
+Complete order flow with user details and order confirmation.
+
+![Order Page](./screenshots/checkout.png)
+
+---
+
+### 👤 User Profile
+Users can manage personal details and view their order history.
+
+![Profile Page](./screenshots/profilepage.png)
+
+---
+
+### 🛠️ Admin Dashboard 
+Admin can add, edit, or delete products.
+
+![Admin Panel](./screenshots/adminlayout.png)
 
 ---
 
